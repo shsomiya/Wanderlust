@@ -1,0 +1,58 @@
+
+
+
+  <div class="row">
+    <div class="col-8 offset-2">
+      <h2>Create New Listing</h2>
+
+      <form method="post" action="/listing" novalidate class="needs-validation"enctype="multipart/form-data" >
+
+        <!-- Title Field -->
+        <div class="mb-3">
+          <label for="title" class="form-label">Title*</label>
+          <input name="listing[title]" type="text" class="form-control" id="title" required>
+          <div class="invalid-feedback">Please enter a title.</div>
+        </div>
+
+        <!-- Description Field -->
+        <div class="mb-3">
+          <label for="description" class="form-label">Description*</label>
+          <textarea name="listing[description]" class="form-control" id="description" required></textarea>
+          <div class="invalid-feedback">Description is required.</div>
+        </div>
+
+        <!-- Image Field -->
+        <div class="mb-3">
+          <label for="image" class="form-label">Image-link</label>
+          <input name="listing[image]" placeholder="type image-link" type="file" class="form-control" id="image">
+        </div>
+
+        <!-- Location Field -->
+        <div class="mb-3">
+          <label for="location" class="form-label">Location</label>
+          <input name="listing[location]" placeholder="type location" type="text" class="form-control" id="location" required>
+          <div class="invalid-feedback">Please enter location.</div>
+        </div>
+
+        <div class="row">
+          <!-- Price Field -->
+          <div class="mb-3 col-md-4">
+            <label for="price" class="form-label">Price*</label>
+            <input name="listing[price]" type="number" class="form-control" id="price" required>
+            <div class="invalid-feedback">Please enter a valid price.</div>
+          </div>
+
+          <!-- Country Field -->
+          <div class="mb-3 col-md-8">
+            <label for="country" class="form-label">Country</label>
+            <input name="listing[country]" placeholder="type country" type="text" class="form-control" id="country" required>
+            <div class="invalid-feedback">Please enter country name.</div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary add-btn">Add</button>
+      </form>
+    </div>
+  </div>
+

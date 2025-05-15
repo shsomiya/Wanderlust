@@ -1,0 +1,37 @@
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    <% for(let allList of allLists){ %>
+      <div class="col">
+        <a href="/listing/<%= allList._id %>" class="text-decoration-none">
+          <div class="card h-100 listing-card">
+            <% if(allList.image) { %>
+              <img 
+                src="<%= typeof allList.image === 'object' ? allList.image.url : allList.image %>" 
+                class="card-img-top" 
+                style="height: 200px; object-fit: cover;" 
+                alt="<%= allList.title %>"
+              >
+            <% } else { %>
+              <img 
+                src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" 
+                class="card-img-top" 
+                style="height: 200px; object-fit: cover;" 
+                alt="Placeholder"
+              >
+            <% } %>
+            
+            <div class="card-body">
+              <h5 class="card-title"><%= allList.title %></h5>
+              <p class="card-text">
+                <span><%= allList.price ? allList.price.toLocaleString("en-BD") + " TK" : "N/A" %>
+                </span>
+                <i class="tax-info">&nbsp;&nbsp; +18%Gst</i>
+                
+
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% } %>
+  </div> 

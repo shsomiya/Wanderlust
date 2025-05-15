@@ -1,0 +1,194 @@
+
+<div class=" container-fluid bg-white border-bottom sticky-top">
+<nav class="navbar navbar-expand-md  ">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/"><i class="fa-regular fa-compass"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          
+          <a class="nav-link" href="/listing"><b class="home">airbnb</b></a>
+         
+          
+        </div>
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="/listing"><b class="homes">HOMES</b></a>
+          <a class="nav-link" href="/listing/new">Arbnb your home</a>
+        </div>
+
+        <div class="navbar-nav ms-auto">
+          
+          <%if(!curruser){ %> 
+          <a class="nav-link " aria-current="page" href="/singup">Singup</a>
+          <a class="nav-link" href="/login">Login</a>
+          <%}%>
+          <%if(curruser){ %> 
+          <a class="nav-link" href="/logout">Logout</a>
+          <%}%>
+        </div>
+      </div>
+
+
+      
+    </div>
+  </nav>
+
+   
+ <div class="search container-fluid"id="searchbar">
+      <form class="d-flex  " role="search">
+        <input class="form-control  search-row me-2 search-bar" type="search" placeholder="Search" aria-label="Search"/>
+        <button class="search-btn  " type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+
+    
+
+
+    </div>
+
+  </div>
+
+
+
+  <div class=" container-fluid d-flex car-fil "id="carousel">
+
+
+
+<!-- Carousel -->
+<div id="customCarousel" class="carousel slide " data-bs-ride="carousel">
+  <div class="carousel-inner text-center py-2">
+    <div class="carousel-item active">
+      <div class="d-flex flex-wrap justify-content-center gap-2">
+        <div class="cate text-center">
+          <i class="fa-solid fa-house "></i>
+          <p>Cabins</p>
+        </div>
+        <div class="cate text-center">
+          <i class="fa-solid fa-mountain-city "></i>
+          <p>Mountain</p>
+        </div>
+        <div class="cate text-center">
+          <i class="fa-solid fa-tree "></i>
+          <p>Forest</p>
+        </div>
+        <div class="cate text-center">
+          <i class="fa-solid fa-water "></i>
+          <p>Lake</p>
+        </div>
+        <div class="cate text-center">
+          <i class="fa-solid fa-tree "></i>
+          <p>Forest</p>
+        </div>
+        <div class="cate text-center">
+          <i class="fa-solid fa-water "></i>
+          <p>Lake</p>
+        </div>
+        <div class="cate text-center">
+          <i class="fa-solid fa-tree "></i>
+          <p>Forest</p>
+        </div>
+        <div class="cate text-center">
+          <i class="fa-solid fa-water "></i>
+          <p>Lake</p>
+        </div>
+        <div class="cate text-center">
+          <i class="fa-solid fa-tree "></i>
+          <p>Forest</p>
+        </div>
+        <div class="cate text-center">
+          <i class="fa-solid fa-water "></i>
+          <p>Lake</p>
+        </div>
+        <div class="cate text-center">
+          <i class="fa-solid fa-water "></i>
+          <p>Lake</p>
+        </div>
+       
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <div class="d-flex flex-wrap justify-content-center gap-2">
+        <div class="cate text-center">
+          <i class="fa-solid fa-house "></i>
+          <p>Cabins</p>
+        </div>
+        <div class="cate text-center">
+          <i class="fa-solid fa-water "></i>
+          <p>Lake</p>
+        </div>
+       
+        <div class="cate text-center">
+          <i class="fa-solid fa-tree "></i>
+          <p>Forest</p>
+        </div>
+        <div class="cate text-center">
+          <i class="fa-solid fa-water "></i>
+          <p>Lake</p>
+        </div>
+        <div class="cate text-center">
+          <i class="fa-solid fa-mountain-city "></i>
+          <p>Mountain</p>
+        </div>
+        <div class="cate text-center">
+          <i class="fa-solid fa-tree "></i>
+          <p>Forest</p>
+        </div>
+        <div class="cate text-center">
+          <i class="fa-solid fa-water "></i>
+          <p>Lake</p>
+        </div>
+        <div class="cate text-center">
+          <i class="fa-solid fa-tree "></i>
+          <p>Forest</p>
+        </div>
+        <div class="cate text-center">
+          <i class="fa-solid fa-water "></i>
+          <p>Lake</p>
+        </div>
+        <div class="cate text-center">
+          <i class="fa-solid fa-tree "></i>
+          <p>Forest</p>
+        </div>
+        <div class="cate text-center">
+          <i class="fa-solid fa-water "></i>
+          <p>Lake</p>
+        </div>
+       
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <button class="carousel-control-prev " type="button" data-bs-target="#customCarousel" data-bs-slide="prev">
+    <i class="fa-solid fa-chevron-left"></i>
+  </button>
+  <button class="carousel-control-next " type="button" data-bs-target="#customCarousel" data-bs-slide="next">
+    <i class="fa-solid fa-chevron-right"></i>
+  </button>
+</div>
+
+
+<div class="f-btn">
+<div class=" filter-btn"id="taxes">
+     <div class="form-check form-switch" >
+    <input class="form-check-input" type="checkbox" id="bookingSwitch">
+    <label class="form-check-label" for="bookingSwitch">Taxes</label>
+  </div>
+  </div>
+</div>
+
+
+</div>
+
+
+
+  
+
+
+
+ 
+
+  

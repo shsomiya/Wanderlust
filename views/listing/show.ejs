@@ -1,0 +1,185 @@
+
+<link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet/dist/leaflet.css"
+  />
+
+   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
+    <div class="row">
+        <div class="col-8 offset-2 mt-2 mb-2">
+          <div class="card mb-4 mt-3 listing-card">
+          <h1 class="card-title"><%= listing.title %></h1>
+
+   
+          <% if (listing.image) { %>
+            <img src="<%= listing.image.url %>" class="card-img-top img-fluid" style="max-height: 200px; object-fit: cover;" alt="<%= listing.title %>">
+          <% } else { %>
+            <div class="bg-secondary text-white p-5 text-center">
+              <i class="bi bi-image" style="font-size: 3rem;"></i>
+              <p class="mt-2">No Image Available</p>
+            </div>
+          <% } %>
+
+
+
+          <div class="card-body">
+
+            <p><strong>Owner:</strong>  <%= listing.owner ? listing.owner.username : "Unknown" %></p>
+            
+            <p class="card-text" mt-2><%= listing.description %></p>
+       
+
+            <div class="row mt-4">
+                <div class="col-md-6">
+                  <p class="mb-2"><i class="bi bi-geo-alt"></i> <strong>Location:</strong></p>
+                  <p class="ps-3"><%= listing.location %></p>
+                </div>
+                <div class="col-md-6">
+                  <p class="mb-2"><i class="bi bi-globe"></i> <strong>Country:</strong></p>
+                  <p class="ps-3"><%= listing.country %></p>
+                </div>
+              </div>
+       
+        
+        <div class="d-flex justify-content-between align-items-center mt-2 pt-2 ">
+      
+          <% let currencySymbol = listing.country === 'Bangladesh' ? '৳' : '$'; %>
+<h5 class="mb-0 text-success">
+  <%= listing.price ? listing.price.toLocaleString("en-US") + ' ' + currencySymbol : 'Price not available' %>
+</h5>
+
+
+          
+              
+           
+    </div>
+    
+
+</div>
+</div>
+
+<div class="d-flex justify-content-between mt-3 mb-3">
+  <a href="/listing" class="btn btn-outline-secondary">
+    <i class="bi bi-arrow-left"></i> Back to Listings
+  </a>
+
+  <% if (curruser && curruser._id.toString() === listing.owner._id.toString()) { %>
+    <div class="mt-3">
+      <a href="/listing/<%= listing._id %>/edit" class="btn btn-warning me-2">
+        <i class="bi bi-pencil-square"></i> Edit
+      </a>
+  
+      <form method="POST" action="/listing/<%= listing._id %>?_method=DELETE" class="d-inline">
+        <button type="submit" class="btn btn-danger">
+          <i class="bi bi-trash"></i> Delete
+        </button>
+      </form>
+    </div>
+  <% } %>
+  
+
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="col-8 offset-2 mb-2">
+
+  <% if(curruser) { %>
+  <h4>Leave a Review</h4>
+
+  <form method="POST" action="/listing/<%= listing.id %>/review" novalidate class="needs-validation">
+
+    <!-- Rating input -->
+    <legend>Rating:</legend>
+    <div class="mb-3">
+      
+   
+
+
+    <fieldset class="starability-growRotate">
+      
+      <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+      <label for="first-rate1" title="Terrible">1 star</label>
+      <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+      <label for="first-rate2" title="Not good">2 stars</label>
+      <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+      <label for="first-rate3" title="Average">3 stars</label>
+      <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+      <label for="first-rate4" title="Very good">4 stars</label>
+      <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+      <label for="first-rate5" title="Amazing">5 stars</label>
+    </fieldset>
+
+
+
+   
+    
+  </div>
+    <!-- Comment input -->
+    <div class="mb-3">
+      <label for="commentText" class="form-label">Comment</label>
+      <textarea class="form-control" name="review[comment]" id="commentText" rows="3" placeholder="Type your review" required></textarea>
+      <div class="invalid-feedback">Please add a comment.</div>
+    </div>
+  
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-outline-dark">Submit</button>
+  
+  </form>
+  <hr>
+  <%}%>
+  
+  
+
+  <h4>All Reviews</h4>
+  <ul>
+    <div class="row">
+    <% for(review of listing.review) { %>
+     
+      <div class="card col-5 ms-3 mb-3">
+        <div class="card-body">
+          <% if (review.author && review.author.username) { %>
+            <h5 class="card-title">@<%= review.author.username %></h5>
+   
+          <% } %>
+   
+          <p class="starability-result card-text" data-rating="<%= review.rating %>">
+            
+          </p>
+          <p class="card-text"><%= review.comment %></p>
+        </div>
+        <form class="mb-3" method="POST" action="/listing/<%= listing._id %>/review/<%= review._id %>?_method=DELETE">
+          <button class="btn btn-dark btn-sm">Delete</button>
+        </form>
+        
+
+      </div>
+
+    
+     
+
+    <% } %>
+  </div>
+  </ul>
+
+  <h1>My Booking Location</h1>
+<div id="map"
+     style="height: 400px; width: 100%;"
+     data-lat="<%= listing.latitude || 37.09024 %>" 
+     data-lng="<%= listing.longitude || -95.712891 %>"
+     data-zoom="<%= (listing.latitude && listing.longitude) ? 15 : 13 %>"
+     data-title="<%= listing.title ? listing.title.replace(/\"/g, '&quot;') : '' %>"
+     data-location="<%= listing.location ? listing.location.replace(/\"/g, '&quot;') : '' %>"
+     data-country="<%= listing.country ? listing.country.replace(/\"/g, '&quot;') : '' %>">
+</div>
+
+
+<script src="/js/map.js"></script>
+
+
+    
+</div>
+

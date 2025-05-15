@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-8 offset-2">
+      <h2>Login on Wonderlust</h2>
+
+      <form method="post" action="/login" novalidate class="needs-validation" >
+
+              <!-- Username Field -->
+        <div class="mb-3">
+            <label for="username" class="form-label">Username*</label>
+            <input  type="text" class="form-control"name="username" id="username" required>
+            <div class="invalid-feedback">Please enter a title.</div>
+          </div>
+
+               <!-- Email Field -->
+        <div class="mb-3">
+            <label for="email" class="form-label">Email*</label>
+            <input  type="email" class="form-control" id="email"name="email" required>
+            
+          </div>
+
+                  <!-- Password Field -->
+        <div class="mb-3">
+            <label for="Password" class="form-label">Password*</label>
+            <input  type="password" class="form-control" id="Password"name="password" required>
+            
+          </div>
+
+           <!-- Submit Button -->
+        <button type="submit" class="btn btn-success add-btn">login</button>
+    </form>
+  </div>
+</div>

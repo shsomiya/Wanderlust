@@ -1,0 +1,62 @@
+
+
+
+    <div class="row">
+        <div class="col-8 offset-2">
+    <h2 class="mt-3">Edit your Listing</h2>
+
+    
+    <form method="POST" action="/listing/<%= listing._id %>?_method=PUT"enctype="multipart/form-data" >
+      
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input name="listing[title]" placeholder="type title"value="<%= listing.title %>" type="text" class="form-control" id="title">
+        </div>
+
+      
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input name="listing[description]" placeholder="type description"value="<%= listing.description %>" type="text" class="form-control" id="description">
+      </div>
+
+
+      <div class="mb-3">
+        Original Image <br><br>
+ 
+        <img src="<%= listing.image.url.replace('/upload/', '/upload/w_20,h_20,c_fill/') %>" alt="Listing image" class="img-thumbnail">
+
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Image-link</label>
+        <input name="listing[image]"type="file" class="form-control" id="image">
+      
+      </div>
+
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input name="listing[location]" placeholder="type location" type="text"value="<%= listing.location %>" class="form-control" id="location">
+      
+      </div>
+      <div class="row">
+      <div class="mb-3 col-md-4">
+        <label for="price" class="form-label">Price</label>
+        <input name="listing[price]" placeholder="type price" type="number" value="<%= listing.price %>"class="form-control" id="price">
+      </div>
+
+      <div class="mb-3 col-md-8">
+        <label for="country" class="form-label">Country</label>
+        <input name="listing[country]" placeholder="type country" type="text" value="<%= listing.country %>"class="form-control" id="country">
+      
+      </div>
+      </div>
+     
+      <button type="submit" class="btn btn-primary add-btn"><i class="bi bi-pencil-square"></i>Edit</button>
+    </form>
+
+</div>
+</div>
+
+
+
