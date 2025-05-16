@@ -1,4 +1,5 @@
-const user = require("../models/user");
+
+const User = require("../models/user.js");
 
 
 //Singup
@@ -22,7 +23,7 @@ module.exports.userSignup = async(req, res,next) => {
         
     }catch(e){
         req.flash("error",e.message)
-        res.redirect("/singup")
+        res.redirect("/signup")
     }
     
 

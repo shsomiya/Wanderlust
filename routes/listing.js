@@ -36,7 +36,8 @@ router.route("/:id")
 .put( isLoggedIn, isOwner, upload.single('listing[image]'),validateListing, wrapAsync(listingController.listingUpdate));
 
 // DELETE
-delete( isLoggedIn, isOwner, wrapAsync(listingController.listingDestroy));
+router.delete("/:id", isLoggedIn, isOwner, wrapAsync(listingController.listingDestroy));
+
 
 
 

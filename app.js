@@ -65,7 +65,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: {
-        secure: false, // FIXED: should be false for localhost
+        secure: true, // FIXED: should be false for localhost
         expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
         maxAge: 7 * 24 * 60 * 60 * 1000,
         httpOnly: true
@@ -107,6 +107,8 @@ async function main() {
     console.log("Connected to MongoDB");
 }
 main();
+
+
 
 // Start server
 const PORT = 8080;

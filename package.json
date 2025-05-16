@@ -1,6 +1,6 @@
 {
-  "engines":{
-    "node":"20.11.1"
+  "engines": {
+    "node": "20.11.1"
   },
   "name": "majorproject",
   "version": "1.0.0",
@@ -26,7 +26,8 @@
     "joi": "^17.13.3",
     "leaflet": "^1.9.4",
     "method-override": "^3.0.0",
-    "mongoose": "^8.13.2",
+    "mongodb": "^6.16.0",
+    "mongoose": "^8.15.0",
     "multer": "^1.4.5-lts.2",
     "multer-storage-cloudinary": "^4.0.0",
     "passport": "^0.7.0",
