@@ -87,7 +87,9 @@ app.use((req, res, next) => {
     res.locals.curruser = req.user;
     next();
 });
-
+app.get("/",(req,res)=>{
+   res.redirect("/listing");
+});
 // Routes
 app.use("/listing", listings);
 app.use("/listing/:id/review", reviews);
