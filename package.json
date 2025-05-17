@@ -1,16 +1,28 @@
 {
   "name": "wanderlust-booking",
   "version": "1.0.0",
+  "description": "A booking platform for travel accommodations",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "prod": "NODE_ENV=production node app.js"
   },
   "engines": {
-    "node": "20.x"
+    "node": "20.x",
+    "npm": ">=9.0.0"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shsomiya/Wanderlust.git"
+  },
+  "keywords": [
+    "travel",
+    "booking",
+    "express",
+    "mongodb"
+  ],
+  "author": "somiya",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.9.0",
@@ -32,7 +44,9 @@
     "multer-storage-cloudinary": "^4.0.0",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^8.0.0",
+    "passport-local-mongoose": "^8.0.0"
+  },
+  "devDependencies": {
     "nodemon": "^3.1.0"
   }
 }
