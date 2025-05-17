@@ -65,11 +65,11 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: {
-        secure: true, // FIXED: should be false for localhost
-        expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
-        maxAge: 7 * 24 * 60 * 60 * 1000,
-        httpOnly: true
-    }
+    secure: process.env.NODE_ENV === 'production', // true in production
+    expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+    httpOnly: true
+}
 }));
 app.use(flash());
 
@@ -87,9 +87,7 @@ app.use((req, res, next) => {
     res.locals.curruser = req.user;
     next();
 });
-app.get("/",(req,res)=>{
-   res.redirect("/listing");
-});
+
 // Routes
 app.use("/listing", listings);
 app.use("/listing/:id/review", reviews);
@@ -103,17 +101,23 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render("listing/error.ejs", { err });
 });
 
+
+
 // Connect to MongoDB
 async function main() {
-    await mongoose.connect(ATLASDBURL);
+    await mongoose.connect(ATLASDBURL, {
+        tls: true,  // Required for MongoDB Atlas
+        serverSelectionTimeoutMS: 5000
+    });
     console.log("Connected to MongoDB");
 }
-main();
 
 
 
 // Start server
-const PORT = 8080;
+
+
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
    
